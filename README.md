@@ -1,8 +1,9 @@
-# PROShine
+# SSinSS
 
+SSinSS is an attempt to revive PROShine.
 A free, open-source and advanced bot for Pokémon Revolution Online.
 
-Community: https://proshine-bot.com/
+Discord/Community: https://discord.gg/5Rq3ujc
 
 Scripts: https://github.com/Silv3rPRO/proshine-scripts
 
@@ -19,3 +20,5 @@ Scripts: https://github.com/Silv3rPRO/proshine-scripts
 ## Contributors
 
 https://github.com/Silv3rPRO/proshine/graphs/contributors
+https://github.com/atemerino
+https://github.com/IamSanjid
