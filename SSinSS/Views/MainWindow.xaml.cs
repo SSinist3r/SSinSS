@@ -857,192 +857,200 @@ namespace PROShine
         {
             Dispatcher.InvokeAsync(delegate
             {
-                string pdseen, pdown, pdevo;
-                int all_badge = 0, kanto = 0, johto = 0, hoenn = 0, sinnoh = 0;
-                // Kanto Badges-------------------------------------------------------------------------
-                if (HasItem("Boulder Badge"))
+                try
                 {
-                    all_badge += 1;
-                    kanto += 1;
-                }
-                if (HasItem("Cascade Badge"))
-                {
-                    all_badge += 1;
-                    kanto += 1;
-                }
-                if (HasItem("Thunder Badge"))
-                {
-                    all_badge += 1;
-                    kanto += 1;
-                }
-                if (HasItem("Rainbow Badge"))
-                {
-                    all_badge += 1;
-                    kanto += 1;
-                }
-                if (HasItem("Soul Badge"))
-                {
-                    all_badge += 1;
-                    kanto += 1;
-                }
-                if (HasItem("Marsh Badge"))
-                {
-                    all_badge += 1;
-                    kanto += 1;
-                }
-                if (HasItem("Volcano Badge"))
-                {
-                    all_badge += 1;
-                    kanto += 1;
-                }
-                if (HasItem("Earth Badge"))
-                {
-                    all_badge += 1;
-                    kanto += 1;
-                }//------------------------------------------------------------
+                    string pdseen, pdown, pdevo;
+                    int all_badge = 0, kanto = 0, johto = 0, hoenn = 0, sinnoh = 0;
+                    // Kanto Badges-------------------------------------------------------------------------
+                    if (HasItem("Boulder Badge"))
+                    {
+                        all_badge += 1;
+                        kanto += 1;
+                    }
+                    if (HasItem("Cascade Badge"))
+                    {
+                        all_badge += 1;
+                        kanto += 1;
+                    }
+                    if (HasItem("Thunder Badge"))
+                    {
+                        all_badge += 1;
+                        kanto += 1;
+                    }
+                    if (HasItem("Rainbow Badge"))
+                    {
+                        all_badge += 1;
+                        kanto += 1;
+                    }
+                    if (HasItem("Soul Badge"))
+                    {
+                        all_badge += 1;
+                        kanto += 1;
+                    }
+                    if (HasItem("Marsh Badge"))
+                    {
+                        all_badge += 1;
+                        kanto += 1;
+                    }
+                    if (HasItem("Volcano Badge"))
+                    {
+                        all_badge += 1;
+                        kanto += 1;
+                    }
+                    if (HasItem("Earth Badge"))
+                    {
+                        all_badge += 1;
+                        kanto += 1;
+                    }//------------------------------------------------------------
 
-                // Johto Badges-------------------------------------------------------------------------
-                if (HasItem("Zephyr Badge"))
-                {
-                    all_badge += 1;
-                    johto += 1;
-                }
-                if (HasItem("Hive Badge"))
-                {
-                    all_badge += 1;
-                    johto += 1;
-                }
-                if (HasItem("Plain Badge"))
-                {
-                    all_badge += 1;
-                    johto += 1;
-                }
-                if (HasItem("Fog Badge"))
-                {
-                    all_badge += 1;
-                    johto += 1;
-                }
-                if (HasItem("Storm Badge"))
-                {
-                    all_badge += 1;
-                    johto += 1;
-                }
-                if (HasItem("Mineral Badge"))
-                {
-                    all_badge += 1;
-                    johto += 1;
-                }
-                if (HasItem("Glacier Badge"))
-                {
-                    all_badge += 1;
-                    johto += 1;
-                }
-                if (HasItem("Rising Badge"))
-                {
-                    all_badge += 1;
-                    johto += 1;
-                }//------------------------------------------------------------------------
+                    // Johto Badges-------------------------------------------------------------------------
+                    if (HasItem("Zephyr Badge"))
+                    {
+                        all_badge += 1;
+                        johto += 1;
+                    }
+                    if (HasItem("Hive Badge"))
+                    {
+                        all_badge += 1;
+                        johto += 1;
+                    }
+                    if (HasItem("Plain Badge"))
+                    {
+                        all_badge += 1;
+                        johto += 1;
+                    }
+                    if (HasItem("Fog Badge"))
+                    {
+                        all_badge += 1;
+                        johto += 1;
+                    }
+                    if (HasItem("Storm Badge"))
+                    {
+                        all_badge += 1;
+                        johto += 1;
+                    }
+                    if (HasItem("Mineral Badge"))
+                    {
+                        all_badge += 1;
+                        johto += 1;
+                    }
+                    if (HasItem("Glacier Badge"))
+                    {
+                        all_badge += 1;
+                        johto += 1;
+                    }
+                    if (HasItem("Rising Badge"))
+                    {
+                        all_badge += 1;
+                        johto += 1;
+                    }//------------------------------------------------------------------------
 
-                // Hoenn Badges-------------------------------------------------------------------------
-                if (HasItem("Stone Badge"))
-                {
-                    all_badge += 1;
-                    hoenn += 1;
-                }
-                if (HasItem("Knuckle Badge"))
-                {
-                    all_badge += 1;
-                    hoenn += 1;
-                }
-                if (HasItem("Dynamo Badge"))
-                {
-                    all_badge += 1;
-                    hoenn += 1;
-                }
-                if (HasItem("Heat Badge"))
-                {
-                    all_badge += 1;
-                    hoenn += 1;
-                }
-                if (HasItem("Balance Badge"))
-                {
-                    all_badge += 1;
-                    hoenn += 1;
-                }
-                if (HasItem("Feather Badge"))
-                {
-                    all_badge += 1;
-                    hoenn += 1;
-                }
-                if (HasItem("Mind Badge"))
-                {
-                    all_badge += 1;
-                    hoenn += 1;
-                }
-                if (HasItem("Rain Badge"))
-                {
-                    all_badge += 1;
-                    hoenn += 1;
-                }//---------------------------------------------------------------------------
+                    // Hoenn Badges-------------------------------------------------------------------------
+                    if (HasItem("Stone Badge"))
+                    {
+                        all_badge += 1;
+                        hoenn += 1;
+                    }
+                    if (HasItem("Knuckle Badge"))
+                    {
+                        all_badge += 1;
+                        hoenn += 1;
+                    }
+                    if (HasItem("Dynamo Badge"))
+                    {
+                        all_badge += 1;
+                        hoenn += 1;
+                    }
+                    if (HasItem("Heat Badge"))
+                    {
+                        all_badge += 1;
+                        hoenn += 1;
+                    }
+                    if (HasItem("Balance Badge"))
+                    {
+                        all_badge += 1;
+                        hoenn += 1;
+                    }
+                    if (HasItem("Feather Badge"))
+                    {
+                        all_badge += 1;
+                        hoenn += 1;
+                    }
+                    if (HasItem("Mind Badge"))
+                    {
+                        all_badge += 1;
+                        hoenn += 1;
+                    }
+                    if (HasItem("Rain Badge"))
+                    {
+                        all_badge += 1;
+                        hoenn += 1;
+                    }//---------------------------------------------------------------------------
 
-                // Sinnoh Badges-------------------------------------------------------------------------
-                if (HasItem("Coal Badge"))
-                {
-                    all_badge += 1;
-                    sinnoh += 1;
-                }
-                if (HasItem("Forest Badge"))
-                {
-                    all_badge += 1;
-                    sinnoh += 1;
-                }
-                if (HasItem("Cobble Badge"))
-                {
-                    all_badge += 1;
-                    sinnoh += 1;
-                }
-                if (HasItem("Fen Badge"))
-                {
-                    all_badge += 1;
-                    sinnoh += 1;
-                }
-                if (HasItem("Relic Badge"))
-                {
-                    all_badge += 1;
-                    sinnoh += 1;
-                }
-                if (HasItem("Mine Badge"))
-                {
-                    all_badge += 1;
-                    sinnoh += 1;
-                }
-                if (HasItem("Icicle Badge"))
-                {
-                    all_badge += 1;
-                    sinnoh += 1;
-                }
-                if (HasItem("Beacon Badge"))
-                {
-                    all_badge += 1;
-                    sinnoh += 1;
-                }//-------------------------------------------------------------------------
-
-
-                BadgeText.Text = all_badge.ToString();
-                BadgeText.ToolTip = "Total Badges: " + all_badge.ToString() + "\nKanto: " + kanto + "\nJohto: " + johto + "\nHoenn: " + hoenn + "\nSinnoh: " + sinnoh;
-                BadgeIcon.ToolTip = "Total Badges: " + all_badge.ToString() + "\nKanto: " + kanto + "\nJohto: " + johto + "\nHoenn: " + hoenn + "\nSinnoh: " + sinnoh;
+                    // Sinnoh Badges-------------------------------------------------------------------------
+                    if (HasItem("Coal Badge"))
+                    {
+                        all_badge += 1;
+                        sinnoh += 1;
+                    }
+                    if (HasItem("Forest Badge"))
+                    {
+                        all_badge += 1;
+                        sinnoh += 1;
+                    }
+                    if (HasItem("Cobble Badge"))
+                    {
+                        all_badge += 1;
+                        sinnoh += 1;
+                    }
+                    if (HasItem("Fen Badge"))
+                    {
+                        all_badge += 1;
+                        sinnoh += 1;
+                    }
+                    if (HasItem("Relic Badge"))
+                    {
+                        all_badge += 1;
+                        sinnoh += 1;
+                    }
+                    if (HasItem("Mine Badge"))
+                    {
+                        all_badge += 1;
+                        sinnoh += 1;
+                    }
+                    if (HasItem("Icicle Badge"))
+                    {
+                        all_badge += 1;
+                        sinnoh += 1;
+                    }
+                    if (HasItem("Beacon Badge"))
+                    {
+                        all_badge += 1;
+                        sinnoh += 1;
+                    }//-------------------------------------------------------------------------
 
 
-                pdseen = Bot.Game.PokedexSeen.ToString();
-                pdown = Bot.Game.PokedexOwned.ToString();
-                pdevo = Bot.Game.PokedexEvolved.ToString();
+                    BadgeText.Text = all_badge.ToString();
+                    BadgeText.ToolTip = "Total Badges: " + all_badge.ToString() + "\nKanto: " + kanto + "\nJohto: " + johto + "\nHoenn: " + hoenn + "\nSinnoh: " + sinnoh;
+                    BadgeIcon.ToolTip = "Total Badges: " + all_badge.ToString() + "\nKanto: " + kanto + "\nJohto: " + johto + "\nHoenn: " + hoenn + "\nSinnoh: " + sinnoh;
 
-                PDSeenText.Text = pdseen;
-                PDOwnText.Text = pdown;
-                PDEvoText.Text = pdevo;
 
-                MapNameText.Text = map;
-                PlayerPositionText.Text = "(" + x + "," + y + ")";
+                    pdseen = Bot.Game.PokedexSeen.ToString();
+                    pdown = Bot.Game.PokedexOwned.ToString();
+                    pdevo = Bot.Game.PokedexEvolved.ToString();
+
+                    PDSeenText.Text = pdseen;
+                    PDOwnText.Text = pdown;
+                    PDEvoText.Text = pdevo;
+
+                    MapNameText.Text = map;
+                    PlayerPositionText.Text = "(" + x + "," + y + ")";
+                }
+                catch(Exception ex)
+                {
+                    LogMessage(ex.ToString());
+                }
+                
             });
         }
 
