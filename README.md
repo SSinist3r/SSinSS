@@ -7,6 +7,15 @@ Discord/Community: https://discord.gg/5Rq3ujc
 
 Scripts: https://github.com/Silv3rPRO/proshine-scripts
 
+
+## Some Features Preview
+
+![](https://cdn.discordapp.com/attachments/717284899849240636/735442089197699072/unknown.png)
+
+![](https://cdn.discordapp.com/attachments/717284899849240636/735442577452695602/unknown.png)
+
+![](https://cdn.discordapp.com/attachments/717284899849240636/735442985700818984/unknown.png)
+
 ## Libraries
 
 * [MoonSharp](http://www.moonsharp.org/) - Lua interpreter
