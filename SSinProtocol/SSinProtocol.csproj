@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C9A1AFC8-2228-4542-B2C7-B6ECA1461C84}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSinProtocol</RootNamespace>
+    <AssemblyName>SSinProtocol</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthenticationResult.cs" />
+    <Compile Include="Battle.cs" />
+    <Compile Include="ChatChannel.cs" />
+    <Compile Include="ChatEmotes.cs" />
+    <Compile Include="EffortValuesManager.cs" />
+    <Compile Include="GameServer.cs" />
+    <Compile Include="ItemsDatabase.cs" />
+    <Compile Include="Language.cs" />
+    <Compile Include="MapClient.cs" />
+    <Compile Include="MapConnection.cs" />
+    <Compile Include="MapLink.cs" />
+    <Compile Include="MoveRelearner.cs" />
+    <Compile Include="MovesManager.cs" />
+    <Compile Include="Direction.cs" />
+    <Compile Include="GameClient.cs" />
+    <Compile Include="GameConnection.cs" />
+    <Compile Include="HardwareHash.cs" />
+    <Compile Include="InventoryItem.cs" />
+    <Compile Include="Map.cs" />
+    <Compile Include="Npc.cs" />
+    <Compile Include="PlayerInfos.cs" />
+    <Compile Include="Pokedex.cs" />
+    <Compile Include="Pokemon.cs" />
+    <Compile Include="AbilitiesManager.cs" />
+    <Compile Include="PokemonExperience.cs" />
+    <Compile Include="PokemonMove.cs" />
+    <Compile Include="PokemonNamesManager.cs" />
+    <Compile Include="PokemonNature.cs" />
+    <Compile Include="PokemonStats.cs" />
+    <Compile Include="PokemonType.cs" />
+    <Compile Include="Region.cs" />
+    <Compile Include="ResourcesUtil.cs" />
+    <Compile Include="Shop.cs" />
+    <Compile Include="ShopItem.cs" />
+    <Compile Include="StatType.cs" />
+    <Compile Include="Timeout.cs" />
+    <Compile Include="TypesManager.cs" />
+    <Compile Include="Encryption.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SSBrightNetwork\SSBrightNetwork.csproj">
+      <Project>{f6f45690-9361-4da4-8a8a-18d782e29752}</Project>
+      <Name>SSBrightNetwork</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Lang.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Abilities.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Items.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Moves.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\PokemonData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
