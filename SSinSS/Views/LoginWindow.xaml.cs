@@ -99,7 +99,7 @@ namespace PROShine
                 return;
             }
 
-            string deviceIdText = !MacRandomCheckBox.IsChecked.Value ? MacAddressTextBox.Text.Trim() : null;
+            string deviceIdText = !MacRandomCheckBox.IsChecked.Value ? MacAddressTextBox.Text.Trim() : HardwareHash.GenerateRandom().ToString();
             if (deviceIdText != null)
             {
                 if (Guid.TryParse(deviceIdText, out Guid deviceId))
