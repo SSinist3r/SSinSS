@@ -141,7 +141,7 @@ namespace PROProtocol
         public event Action ActivePokemonChanged;
         public event Action OpponentChanged;
         
-        private const string Version = "Spring20";
+        private const string Version = "Mega";
 
         private GameConnection _connection;
         private DateTime _lastMovement;

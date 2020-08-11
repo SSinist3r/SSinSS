@@ -24,7 +24,7 @@ namespace PROShine
         private string _lastActiveName;
         private string _lastOpponentName;
         private Regex _nameCleaner = new Regex("'| |\\."); // Removes invalid characters
-        private const string _spriteDatabasePrefix = "http://pokestadium.com/sprites/xy";
+        private const string _spriteDatabasePrefix = "https://www.pkparaiso.com/imagenes/xy/sprites";
 
         public BattleView(BotClient bot, MainWindow parent)
         {
@@ -59,9 +59,9 @@ namespace PROShine
                             _lastOpponentName = opponent;
                             string sprite = _nameCleaner.Replace(opponent.ToLowerInvariant(), "");
                             if (_bot.Game.ActiveBattle.IsShiny)
-                                sprite = $"{_spriteDatabasePrefix}/shiny/{sprite}.gif";
+                                sprite = $"{_spriteDatabasePrefix}/animados-shiny/{sprite}.gif";
                             else
-                                sprite = $"{_spriteDatabasePrefix}/{sprite}.gif";
+                                sprite = $"{_spriteDatabasePrefix}/animados/{sprite}.gif";
                             AnimationBehavior.SetSourceUri(OpponentGraphic, new Uri(sprite));
                         }
 
@@ -110,9 +110,9 @@ namespace PROShine
                             _lastActiveName = active.Name;
                             string sprite = _nameCleaner.Replace(active.Name.ToLowerInvariant(), "");
                             if (active.IsShiny)
-                                sprite = $"{_spriteDatabasePrefix}/shiny/back/{sprite}.gif";
+                                sprite = $"{_spriteDatabasePrefix}/animados-espalda-shiny/{sprite}.gif"; // shiny back
                             else
-                                sprite = $"{_spriteDatabasePrefix}/back/{sprite}.gif";
+                                sprite = $"{_spriteDatabasePrefix}/animados-espalda/{sprite}.gif";
                             AnimationBehavior.SetSourceUri(PlayerGraphic, new Uri(sprite));
                         }
 
