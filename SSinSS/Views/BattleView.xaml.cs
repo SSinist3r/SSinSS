@@ -58,6 +58,7 @@ namespace PROShine
                         {
                             _lastOpponentName = opponent;
                             string sprite = _nameCleaner.Replace(opponent.ToLowerInvariant(), "");
+                            //sprite = sprite.Replace("-", "_");
                             if (_bot.Game.ActiveBattle.IsShiny)
                                 sprite = $"{_spriteDatabasePrefix}/animados-shiny/{sprite}.gif";
                             else
@@ -109,6 +110,7 @@ namespace PROShine
                         {
                             _lastActiveName = active.Name;
                             string sprite = _nameCleaner.Replace(active.Name.ToLowerInvariant(), "");
+                            //sprite = sprite.Replace("-", "_");
                             if (active.IsShiny)
                                 sprite = $"{_spriteDatabasePrefix}/animados-espalda-shiny/{sprite}.gif"; // shiny back
                             else

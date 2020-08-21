@@ -141,7 +141,7 @@ namespace PROProtocol
         public event Action ActivePokemonChanged;
         public event Action OpponentChanged;
         
-        private const string Version = "Mega";
+        private const string Version = "Mega_v2";
 
         private GameConnection _connection;
         private DateTime _lastMovement;
@@ -273,7 +273,7 @@ namespace PROProtocol
         {
             try
             {
-                SendPacket("p|.|l|0");
+                SendPacket("p|.|1|0");
             }
             catch (Exception ex)
             {
@@ -566,19 +566,19 @@ namespace PROProtocol
             string toSend = "*|.|" + id;
             if (pokemon != 0)
             {
-                toSend += "|.|" + pokemon;
+                toSend += "|.|" + Team[pokemon - 1].DatabaseId;
             }
             SendPacket(toSend);
         }
 
-        public void SendGiveItem(int pokemonUid, int itemId)
+        public void SendGiveItem(int databaseId, int itemId)
         {
-            SendMessage("/giveitem " + pokemonUid + "," + itemId);
+            SendPacket("<|.|" + databaseId + "|" + itemId);
         }
 
-        public void SendTakeItem(int pokemonUid)
+        public void SendTakeItem(int databaseId)
         {
-            SendMessage("/takeitem " + pokemonUid);
+            SendPacket(">|.|" + databaseId);
         }
 
         public void LearnMove(int pokemonUid, int moveToForgetUid)
@@ -589,7 +589,7 @@ namespace PROProtocol
 
         private void SendLearnMove(int pokemonUid, int moveToForgetUid)
         {
-            SendPacket("^|.|" + pokemonUid + "|.|" + moveToForgetUid);
+            SendPacket("^|.|" + (pokemonUid) + "|.|" + moveToForgetUid);
         }
 
         private void SendMovePokemonToPC(int pokemonUid)
@@ -839,15 +839,15 @@ namespace PROProtocol
                 }
                 else if (!_battleTimeout.IsActive && IsInBattle && item.Scope == 2)
                 {
-                    SendAttack("item" + id + ":" + pokemonUid);
+                    SendAttack("item" + id + ":" + Team[pokemonUid - 1].DatabaseId);
                     _battleTimeout.Set();
                 }
             }
         }
 
-        public bool GiveItemToPokemon(int pokemonUid, int itemId)
+        public bool GiveItemToPokemon(int databaseId, int itemId)
         {
-            if (!(pokemonUid >= 1 && pokemonUid <= Team.Count))
+            if (!(databaseId >= 1 && databaseId <= Team.Count))
             {
                 return false;
             }
@@ -860,22 +860,22 @@ namespace PROProtocol
                 && (item.Scope == 2 || item.Scope == 3 || item.Scope == 9 || item.Scope == 13
                 || item.Scope == 14 || item.Scope == 5 || item.Scope == 12 || item.Scope == 6))
             {
-                SendGiveItem(pokemonUid, itemId);
+                SendGiveItem(Team[databaseId - 1].DatabaseId, itemId);
                 _itemUseTimeout.Set();
                 return true;
             }
             return false;
         }
 
-        public bool TakeItemFromPokemon(int pokemonUid)
+        public bool TakeItemFromPokemon(int databaseId)
         {
-            if (!(pokemonUid >= 1 && pokemonUid <= Team.Count))
+            if (!(databaseId >= 1 && databaseId <= Team.Count))
             {
                 return false;
             }
-            if (!_itemUseTimeout.IsActive && Team[pokemonUid - 1].ItemHeld != "")
+            if (!_itemUseTimeout.IsActive && Team[databaseId - 1].ItemHeld != "")
             {
-                SendTakeItem(pokemonUid);
+                SendTakeItem(Team[databaseId - 1].DatabaseId);
                 _itemUseTimeout.Set();
                 return true;
             }
@@ -1172,7 +1172,17 @@ namespace PROProtocol
         private void SendDialogResponse(int number)
         {
             // DSSock.ClickButton
-            SendPacket("R|.|" + ScriptId + "|.|" + number);
+            //SendPacket("R|.|" + ScriptId + "|.|" + number);
+#if DEBUG
+           
+#endif
+            if (ScriptStatus < 4)
+                SendPacket("R|.|" + number);
+            else
+            {
+                SendPacket("R|.|" + Team[number - 1].DatabaseId);
+            }
+
         }
 
         public void SendAcceptEvolution(int evolvingPokemonDBid)
@@ -1324,6 +1334,8 @@ namespace PROProtocol
                     default:
 #if DEBUG
                         Console.WriteLine(" ^ unhandled /!\\");
+                        Console.WriteLine($"Type: ------ {type} ------");
+                        Console.WriteLine($"Packet: ------ {packet} ------");
 #endif
                         break;
                 }
