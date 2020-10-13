@@ -198,6 +198,7 @@ namespace PROBot.Scripting
             _lua.Globals["isMounted"] = new Func<bool>(IsMounted);
             _lua.Globals["isSurfing"] = new Func<bool>(IsSurfing);
             _lua.Globals["isPrivateMessageEnabled"] = new Func<bool>(IsPrivateMessageEnabled);
+            _lua.Globals["isPartyInspectionEnabled"] = new Func<bool>(IsPartyInspectionEnabled);
             _lua.Globals["isNpcInteractionsEnabled"] = new Func<bool>(IsNpcInteractionsEnabled);
             _lua.Globals["getTime"] = new GetTimeDelegate(GetTime);
             _lua.Globals["isMorning"] = new Func<bool>(IsMorning);
@@ -299,6 +300,8 @@ namespace PROBot.Scripting
             _lua.Globals["releasePokemonFromPC"] = new Func<int, int, bool>(ReleasePokemonFromPC);
             _lua.Globals["enablePrivateMessage"] = new Func<bool>(EnablePrivateMessage);
             _lua.Globals["disablePrivateMessage"] = new Func<bool>(DisablePrivateMessage);
+            _lua.Globals["enablePartyInspection"] = new Func<bool>(EnablePartyInspection);
+            _lua.Globals["disablePartyInspection"] = new Func<bool>(DisablePartyInspection);
             _lua.Globals["enableAutoEvolve"] = new Func<bool>(EnableAutoEvolve);
             _lua.Globals["disableAutoEvolve"] = new Func<bool>(DisableAutoEvolve);
             _lua.Globals["enableNpcInteractions"] = new Func<bool>(EnableNpcInteractions);
@@ -1939,6 +1942,24 @@ namespace PROBot.Scripting
         private bool DisablePrivateMessage()
         {
             return ExecuteAction(Bot.Game.PrivateMessageOff());
+        }
+
+        // API: Check if party inspections are turned on.
+        private bool IsPartyInspectionEnabled()
+        {
+            return Bot.Game.IsPartyInspectionOn;
+        }
+
+        // API: Enable party inspection from users.
+        private bool EnablePartyInspection()
+        {
+            return ExecuteAction(Bot.Game.PartyInspectionOn());
+        }
+
+        // API: Disable party inspection from users.
+        private bool DisablePartyInspection()
+        {
+            return ExecuteAction(Bot.Game.PartyInspectionOff());
         }
 
         // API: Returns true if the bot is checking for npc interactions.
