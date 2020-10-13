@@ -68,6 +68,9 @@ namespace PROProtocol
         public bool CanUseCut { get; private set; }
         public bool CanUseSmashRock { get; private set; }
         public bool IsPrivateMessageOn { get; private set; } = true;
+
+        public bool IsPartyInspectionOn { get; private set; } = true;
+
         public bool IsNpcInteractionsOn { get; private set; } = true;
 
         public int Money { get; private set; }
@@ -141,7 +144,7 @@ namespace PROProtocol
         public event Action ActivePokemonChanged;
         public event Action OpponentChanged;
         
-        private const string Version = "Mega_v2";
+        private const string Version = "Halloween20_v2";
 
         private GameConnection _connection;
         private DateTime _lastMovement;
@@ -624,6 +627,16 @@ namespace PROProtocol
             SendMessage("/pmoff");
         }
 
+        private void SendPartyInspectionOn()
+        {
+            SendMessage("/in1");
+        }
+
+        private void SendPartyInspectionOff()
+        {
+            SendMessage("/in0");
+        }
+
         private void SendPrivateMessageAway()
         {
             SendMessage("/pmaway");
@@ -645,6 +658,20 @@ namespace PROProtocol
         {
             IsPrivateMessageOn = false;
             SendPrivateMessageOff();
+            return true;
+        }
+
+        public bool PartyInspectionOn()
+        {
+            IsPartyInspectionOn = true;
+            SendPartyInspectionOn();
+            return true;
+        }
+
+        public bool PartyInspectionOff()
+        {
+            IsPartyInspectionOn = false;
+            SendPartyInspectionOff();
             return true;
         }
 
@@ -1331,6 +1358,9 @@ namespace PROProtocol
                     case "y":
                         OnGuildData(data);
                         break;
+                    //case "k":
+                    //    OnMapSpawnData(data);
+                    //    break;
                     default:
 #if DEBUG
                         Console.WriteLine(" ^ unhandled /!\\");
@@ -1433,6 +1463,7 @@ namespace PROProtocol
 
         private void OnPlayerSync(string[] data)
         {
+            // S|.|Pewter City|24|36|1
             string[] mapData = data[1].Split(new[] { "|" }, StringSplitOptions.None);
 
             if (mapData.Length < 2)
@@ -1691,6 +1722,28 @@ namespace PROProtocol
             }
         }
 
+        private void OnMapSpawnData(string[] data)
+        {
+            // k|.|Route 4,ci21,i24,41,23,c163,39,ci19,m0,s41,sci60,s79,ms0,s0,
+            // c = caught
+            // i = item
+            // m = membership
+            // s = surf
+            data = data[1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            string mapName = data[0];
+
+            if (data[1] == "none!")
+            {
+                return;
+            }
+
+            foreach (var pokemonData in data.Skip(1))
+            {
+
+            }
+
+        }
+
         private void OnUpdateTime(string[] data)
         {
             string[] timeData = data[1].Split('|');
@@ -1801,7 +1854,7 @@ namespace PROProtocol
             _movements.Clear();
             _slidingDirection = null;
 
-            _battleTimeout.Set(Rand.Next(4000, 6000));
+            _battleTimeout.Set(Rand.Next(4000, 5000));
             _fishingTimeout.Cancel();
 
             BattleStarted?.Invoke();
@@ -1842,11 +1895,11 @@ namespace PROProtocol
 
             if (ActiveBattle.IsFinished)
             {
-                _battleTimeout.Set(Rand.Next(1500, 5000));
+                _battleTimeout.Set(Rand.Next(4000, 7000));
             }
             else
             {
-                _battleTimeout.Set(Rand.Next(2000, 4000));
+                _battleTimeout.Set(Rand.Next(4000, 7000));
             }
 
             if (ActiveBattle.IsFinished)
